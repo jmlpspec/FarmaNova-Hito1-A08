@@ -1,0 +1,2 @@
+import test from 'node:test'; import assert from 'node:assert/strict'; import {buildDraft} from '../src/services/draftService.js';
+test('borrador vincula fuentes y exige aprobación humana',()=>{const r=buildDraft({requestId:'R1',requesterProfile:'Médico',question:'Consulta',documents:[{documentId:'D1',title:'Ficha',excerpt:'Fragmento'}]});assert.equal(r.sources.length,1);assert.equal(r.approval.required,true);assert.equal(r.status,'DRAFT_REQUIRES_HUMAN_REVIEW');});
