@@ -1,22 +1,38 @@
-# FarmaNova PoC A08
-MVP académico para apoyar al analista de Información Médica con borradores técnicos basados en fuentes autorizadas. La aprobación humana es obligatoria.
+# FarmaNova PoC A08 — Hito 1
 
-## Ejecutar
-Backend: `cd backend && npm install && npm run dev` (puerto 3001).
-Frontend: `cd frontend && npm install && npm run dev` (Vite, normalmente 5173).
+Prototipo académico para apoyar al analista de Información Médica en la elaboración de borradores técnicos B2B.
 
-Prueba backend: `GET http://localhost:3001/health` y `POST /api/drafts`.
+## Estado implementado
+- Frontend React para capturar perfil y consulta.
+- Backend Node.js/Express.
+- `GET /health` y `POST /api/drafts`.
+- Validación básica y prueba automatizada.
+- Respuesta determinista DEMO con fuente ficticia, alertas y aprobación humana pendiente.
 
-Esta primera iteración utiliza una respuesta determinista DEMO y documentos ficticios suministrados por el frontend. No implementa RAG vectorial ni una integración real con LLM. No usar en producción ni para decisiones clínicas.
+## No implementado
+No hay integración real con LLM, RAG vectorial, repositorio documental, persistencia de entidades, autenticación empresarial, workflow de aprobación ni despliegue AWS. Los diagramas describen una arquitectura objetivo.
 
-## Publicar en GitHub
-Crear repositorio público vacío y ejecutar:
+## Ejecución local
+Backend:
 ```bash
-git init
-git add .
-git commit -m "Initial FarmaNova A08 PoC"
-git branch -M main
-git remote add origin https://github.com/USUARIO/REPO.git
-git push -u origin main
+cd backend
+npm install
+npm test
+npm run dev
 ```
-No subir `.env`, claves ni `node_modules`.
+Frontend, en otra terminal:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Abrir `http://localhost:5173`. Backend: `http://localhost:3001/health`.
+
+## Seguridad
+No usar información real de pacientes ni documentos confidenciales. No usar en producción ni para decisiones clínicas. No subir `.env`, secretos ni `node_modules`.
+
+## Documentación
+- `docs/01-alcance.md`: alcance y métricas.
+- `docs/02-historias-y-tickets.md`: historias y tickets.
+- `docs/03-diagramas.md`: secuencia, entidades y arquitectura objetivo.
+- `docs/04-comparacion-LLM.md`: comparación real ChatGPT vs. Claude.
